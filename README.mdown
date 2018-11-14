@@ -37,7 +37,9 @@ As this requires access to the AWS API you will need this IAM policy as a minimu
             {
                 "Action": [
                   "cloudformation:ListStacks",
+                  "cloudformation:ListStackResources",
                   "cloudformation:DetectStackDrift",
+                  "cloudformation:DetectStackResourceDrift",
                   "cloudformation:DescribeStackDriftDetectionStatus"
                 ],
                 "Resource": "*",
