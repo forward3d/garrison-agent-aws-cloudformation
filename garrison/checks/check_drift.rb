@@ -26,6 +26,7 @@ module Garrison
           AwsHelper.list_stacks(cf).each do |stack|
             Logging.info "Checking stack #{stack.stack_id}"
             drift_status = AwsHelper.detect_drift(cf, stack)
+            next if drift_status.detection_status == 'DETECTION_FAILED'
 
             if drift_status.stack_drift_status == 'DRIFTED'
               alert(
