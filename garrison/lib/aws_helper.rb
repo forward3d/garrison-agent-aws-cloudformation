@@ -6,7 +6,7 @@ module Garrison
     end
 
     def self.all_regions
-      Aws.partition('aws').regions.map(&:name)
+      Aws::Partitions.partition('aws').service('CloudFormation').regions
     end
 
     def self.list_stacks(cloudformation)
