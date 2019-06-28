@@ -18,8 +18,14 @@ module Garrison
           params = {}
           params[:next_token] = token if token != ''
           params[:stack_status_filter] = %w(CREATE_COMPLETE ROLLBACK_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE)
-          results = cloudformation.list_stacks(params)
-          results.stack_summaries.map { |item| yielder << item }
+
+          begin
+            results = cloudformation.list_stacks(params)
+            results.stack_summaries.map { |item| yielder << item }
+          rescue Aws::CloudFormation::Errors::InvalidClientTokenId => e
+            Logging.warn "#{cloudformation.config.region} - #{e.message}"
+            raise StopIteration
+          end
 
           if results.next_token
             next_token = results.next_token
