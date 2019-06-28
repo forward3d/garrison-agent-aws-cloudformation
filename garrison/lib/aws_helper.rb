@@ -17,7 +17,7 @@ module Garrison
           Logging.debug "AWS SDK - Listings Stacks (token=#{token})"
           params = {}
           params[:next_token] = token if token != ''
-          params[:stack_status_filter] = %w(CREATE_COMPLETE ROLLBACK_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE)
+          params[:stack_status_filter] = %w(CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE)
 
           begin
             results = cloudformation.list_stacks(params)
