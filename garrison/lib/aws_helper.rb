@@ -52,6 +52,7 @@ module Garrison
 
       if status == 'DETECTION_FAILED'
         Logging.error "AWS SDK - Drift Detection Failed (stack=#{stack.stack_id} detection_status_reason=#{drift_status.detection_status_reason})"
+        sleep(10)
       end
 
       drift_status
