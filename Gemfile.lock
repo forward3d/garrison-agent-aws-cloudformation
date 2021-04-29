@@ -2,8 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     aws-eventstream (1.1.1)
-    aws-partitions (1.446.0)
-    aws-sdk-cloudformation (1.51.0)
+    aws-partitions (1.449.0)
+    aws-sdk-cloudformation (1.52.0)
       aws-sdk-core (~> 3, >= 3.112.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-core (3.114.0)
